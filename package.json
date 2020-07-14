@@ -1,0 +1,31 @@
+{
+    "name": "cordova-plugin-android-utility",
+    "version": "1.0.0",
+    "description": "Cordova Android general utility plugin.",
+    "cordova": {
+      "id": "cordova-plugin-android-utility",
+      "platforms": [
+        "android"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/DavidBriglio/cordova-plugin-android-utility"
+    },
+    "keywords": [
+      "cordova",
+      "android",
+      "utility",
+      "tool",
+      "tools",
+      "ecosystem:cordova",
+      "cordova-android"
+    ],
+    "author": "David Briglio",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/DavidBriglio/cordova-plugin-android-utility/issues"
+    },
+    "homepage": "https://github.com/DavidBriglio/cordova-plugin-android-utility"
+  }
+  

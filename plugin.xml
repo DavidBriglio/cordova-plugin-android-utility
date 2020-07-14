@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-android-utility" version="1.0.0">
+  <name>Cordova Android Utility</name>
+  <description>Cordova Android general utility plugin.</description>
+  <license>MIT</license>
+  <author>David Briglio</author>
+  <repo>https://github.com/DavidBriglio/cordova-plugin-android-utility</repo>
+  <keywords>cordova,tool,utility</keywords>
+  <js-module src="www/utility.js" name="Utility">
+    <clobbers target="cordova.plugins.android.utility" />
+  </js-module>
+  <platform name="android">
+    <source-file src="src/UtilityPlugin.java" target-dir="src/com/davidbriglio/utility" />
+    <config-file target="config.xml" parent="/*">
+      <feature name="UtilityPlugin">
+        <param name="android-package" value="com.davidbriglio.utility.UtilityPlugin" />
+      </feature>
+    </config-file>
+  </platform>
+</plugin>
