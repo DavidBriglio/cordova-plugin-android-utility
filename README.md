@@ -4,12 +4,14 @@ This plugin is built as a general tool utility to perform relatively small tasks
 
 ---
 
-Contents:
+## Contents
 
 - [Setup](#Setup)
 - [Methods](#methods)
+  - [getVersionInfo()](#getVersionInfo)
   - [getNotificationChannels()](#getNotificationChannels)
   - [getNotificationChannel()](#getNotificationChannel)
+  - [getNotificationSettings()](#getNotificationSettings)
 - [Questions](#Questions?)
 - [License](#License)
 
@@ -27,7 +29,38 @@ cordova plugin add https://github.com/DavidBriglio/cordova-plugin-android-utilit
 
 ## Methods
 
+### getVersionInfo
+
+`Usage: cordova.plugins.android.utility.getVersionInfo()`
+
+This method will return information on the android version.
+
+Returns Promise with:
+
+| Index | Type |
+|-------|------|
+| sdk | Integer |
+| baseOs | String |
+| codeName | String |
+| incremental | String |
+| previewSdk | Integer |
+| release | String |
+| securityPatch | String |
+
+Example Usage:
+
+```javascript
+cordova.plugins.android.utility.getVersionInfo()
+  .then(info => {
+    // Show the android official release number and the sdk number
+    console.log(`Android ${info.release} (SDK ${info.sdk})`)
+  })
+  .catch(message => console.log('Error: ' + message))
+```
+
 ### getNotificationChannels
+
+*Android 26+*
 
 `Usage: cordova.plugins.android.utility.getNotificationChannels()`
 
@@ -36,7 +69,6 @@ This method will return a promise with an array of notification channel id strin
 Example Usage:
 
 ```javascript
-
 cordova.plugins.android.utility.getNotificationChannels()
   .then(channels => {
     // List all channels
@@ -45,10 +77,11 @@ cordova.plugins.android.utility.getNotificationChannels()
     }
   })
   .catch(message => console.log('Error: ' + message))
-
 ```
 
 ### getNotificationChannel
+
+*Android 26+*
 
 `Usage: cordova.plugins.android.utility.getNotificationChannel([string: channel id])`
 
@@ -77,7 +110,6 @@ Returns Promise with:
 Example Usage:
 
 ```javascript
-
 cordova.plugins.android.utility.getNotificationChannel('TEST_CHANNEL_1')
   .then(channel => {
     // Show some of the channel information
@@ -86,7 +118,29 @@ cordova.plugins.android.utility.getNotificationChannel('TEST_CHANNEL_1')
     console.log('This channel uses the sound: ' + channel.sound)
   })
   .catch(message => console.log('Error: ' + message))
+```
 
+### getNotificationSettings
+
+`Usage: cordova.plugins.android.utility.getNotificationSettings()`
+
+Obtain the base notification settings for the application. Use this for global settings and with API 25-.
+
+Returns Promise with:
+
+| Index | Type | Description |
+|-------|------|-------------|
+| enabled | Boolean | True if notifications are enabled for the app. |
+| importance | Integer | Integer value representing importance of notifications in the app. (API 25-) |
+
+```javascript
+cordova.plugins.android.utility.getNotificationSettings()
+  .then(settings => {
+    // Show the global notification settings for the app
+    console.log('Notifications are: ' + (settings.enabled ? 'Enabled' : 'Disabled'))
+    console.log('Importance Level: ' + settings.importance)
+  })
+  .catch(message => console.log('Error: ' + message))
 ```
 
 ---
