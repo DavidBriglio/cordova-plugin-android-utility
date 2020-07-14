@@ -1,4 +1,4 @@
-# cordova-plugin-android-utility
+# Cordova Android Utility Plugin [![npm version](https://badge.fury.io/js/cordova-plugin-android-utility.svg)](https://badge.fury.io/js/cordova-plugin-android-utility)
 
 This plugin is built as a general tool utility to perform relatively small tasks on the native android side.
 
