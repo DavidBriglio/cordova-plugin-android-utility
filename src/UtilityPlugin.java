@@ -1,6 +1,7 @@
 package com.davidbriglio.utility;
 
 import android.content.Context;
+import android.content.Intent;
 import android.app.NotificationManager;
 import androidx.core.app.NotificationManagerCompat;
 import android.app.NotificationChannel;
@@ -94,6 +95,20 @@ public class UtilityPlugin extends CordovaPlugin {
       payload.put("securityPatch", android.os.Build.VERSION.SECURITY_PATCH);
 
       callbackContext.success(payload);
+    } else if (action.equals("openNotificationSettings")) {
+      Intent intent = new Intent();
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+      intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+
+      //for Android 5-7
+      intent.putExtra("app_package", mContext.getPackageName());
+      intent.putExtra("app_uid", mContext.getApplicationInfo().uid);
+
+      // for Android 8 and above
+      intent.putExtra("android.provider.extra.APP_PACKAGE", mContext.getPackageName());
+
+      mContext.startActivity(intent);
+      callbackContext.success();
     } else {
       callbackContext.error("Invalid plugin action");
     }

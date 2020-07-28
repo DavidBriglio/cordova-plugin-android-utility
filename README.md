@@ -12,6 +12,7 @@ This plugin is built as a general tool utility to perform relatively small tasks
   - [getNotificationChannels()](#getNotificationChannels)
   - [getNotificationChannel()](#getNotificationChannel)
   - [getNotificationSettings()](#getNotificationSettings)
+  - [openNotificationSettings()](#openNotificationSettings)
 - [Questions](#Questions?)
 - [License](#License)
 
@@ -142,6 +143,12 @@ cordova.plugins.android.utility.getNotificationSettings()
   })
   .catch(message => console.log('Error: ' + message))
 ```
+
+### openNotificationSettings
+
+`Usage: cordova.plugins.android.utility.openNotificationSettings()`
+
+Open the Android OS notification settings page corresponding to the current application. This method takes no parameters and does not return any values.
 
 ---
 
