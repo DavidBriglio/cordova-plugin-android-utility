@@ -4,7 +4,6 @@
 
 - Added `getSimInfo` method
 
-
 ## 1.2.0 - 28-07-2020
 
 - Added `openNotificationSettings` method
