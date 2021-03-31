@@ -150,6 +150,25 @@ cordova.plugins.android.utility.getNotificationSettings()
 
 Open the Android OS notification settings page corresponding to the current application. This method takes no parameters and does not return any values.
 
+### getSimInfo
+
+`Usage: cordova.plugins.android.utility.getSimInfo()`
+
+Obtain the sim card information including the device phone number, imei and sim serial number.
+
+| Index | Permission Required |
+|-------|---------------------|
+| phoneNumber | android.permission.READ_PHONE_STATE |
+| imei | android.permission.READ_PRIVILEGED_PHONE_STATE |
+| serial | android.permission.READ_PRIVILEGED_PHONE_STATE |
+
+```javascript
+// NOTE: Proper permissions must be requested first
+cordova.plugins.android.utility.getSimInfo()
+  .then(info => console.log(`Phone Number: ${info.phoneNumber}, IMEI: ${info.imei}, Serial#:${serial}`))
+  .catch(message => console.log('Error Message: ${message}`)
+```
+
 ---
 
 ## Questions?

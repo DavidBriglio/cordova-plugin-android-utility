@@ -2,6 +2,7 @@ package com.davidbriglio.utility;
 
 import android.content.Context;
 import android.content.Intent;
+import android.telephony.TelephonyManager;
 import android.app.NotificationManager;
 import androidx.core.app.NotificationManagerCompat;
 import android.app.NotificationChannel;
@@ -109,6 +110,25 @@ public class UtilityPlugin extends CordovaPlugin {
 
       mContext.startActivity(intent);
       callbackContext.success();
+    } else if (action.equals("getSimInfo")) {
+      JSONObject payload = new JSONObject();
+
+      TelephonyManager telemamanger = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+
+      try {
+        payload.put("phoneNumber", telemamanger.getLine1Number());
+      } catch (Exception e) {
+        // We don't have permission
+      }
+
+      try {
+        payload.put("serial", telemamanger.getSimSerialNumber());
+        payload.put("imei", telemamanger.getDeviceId());
+      } catch (Exception e) {
+        // We don't have permission
+      }
+
+      callbackContext.success(payload);
     } else {
       callbackContext.error("Invalid plugin action");
     }
