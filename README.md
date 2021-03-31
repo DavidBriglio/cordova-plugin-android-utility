@@ -13,6 +13,7 @@ This plugin is built as a general tool utility to perform relatively small tasks
   - [getNotificationChannel()](#getNotificationChannel)
   - [getNotificationSettings()](#getNotificationSettings)
   - [openNotificationSettings()](#openNotificationSettings)
+  - [getSimInfo()](#getSimInfo)
 - [Questions](#Questions?)
 - [License](#License)
 
@@ -165,8 +166,8 @@ Obtain the sim card information including the device phone number, imei and sim 
 ```javascript
 // NOTE: Proper permissions must be requested first
 cordova.plugins.android.utility.getSimInfo()
-  .then(info => console.log(`Phone Number: ${info.phoneNumber}, IMEI: ${info.imei}, Serial#:${serial}`))
-  .catch(message => console.log('Error Message: ${message}`)
+  .then(info => console.log(`Phone Number: ${info.phoneNumber}, IMEI: ${info.imei}, Serial#: ${info.serial}`))
+  .catch(message => console.log(`Error Message: ${message}`))
 ```
 
 ---
